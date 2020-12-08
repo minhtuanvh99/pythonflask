@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+    <h1>Sign In</h1>
+    <form action="" method="post" novalidate>
+        <!-- create a hidden field contain a protected token avoid attacked (CRSF) -->
+        {{ form.hidden_tag() }} 
+        <!-- 
+            form.<field_name>.label auto create a html if <field_name> was created from LoginForm.
+            They are connected by controllers (routes.py)      
+        -->
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+            <!-- handling error if username is not valid -->
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+            <!-- handling error if password is not valid -->
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+        <!--  -->
+    </form>
+{% endblock %}
