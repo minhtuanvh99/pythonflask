@@ -13,8 +13,10 @@ import os
 
 app = Flask(__name__)
 
-# set database config
+# get all configuration of the app from config module 
 app.config.from_object(Config)
+
+# set database config
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -23,9 +25,6 @@ login = LoginManager(app)
 # set a default page, if user request to a page which need to authentication
 # redirect to this page
 login.login_view = 'login'
-
-# get all configuration of the app from config module 
-app.config.from_object(Config)
 
 # 
 if not app.debug:
