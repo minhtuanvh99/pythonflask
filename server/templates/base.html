@@ -10,6 +10,7 @@
         <div>
             Myblog:
             <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('explore') }}">Explore</a>
             <!-- .is_anonymous is provided by UserMixin, return true if user has not logged in -->
             {% if current_user.is_anonymous %}
                 <a href="{{ url_for('login') }}">Login</a>
