@@ -14,6 +14,7 @@ import os
 from flask_mail import Mail
 #
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 app = Flask(__name__)
 
@@ -31,7 +32,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 #
 mail = Mail(app)
-
+moment = Moment(app)
 bootstrap = Bootstrap(app)
 
 # 
@@ -63,7 +64,6 @@ if not app.debug:
  
     app.logger.setLevel(logging.INFO)
     app.logger.info('Myblog startup')
-
 
 
 from server import routes, models, errors
