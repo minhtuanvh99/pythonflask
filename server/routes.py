@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, g
 from werkzeug.urls import url_parse
 from server import app, db
 from server.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
@@ -7,6 +7,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from server.models import User, Post
 from datetime import datetime
 from server.email import send_password_reset_email
+from flask_babel import get_locale
 
 
 # .before_request: have to run this after call display function
@@ -15,6 +16,7 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+    g.locale = str(get_locale())
 
 
 # home page route

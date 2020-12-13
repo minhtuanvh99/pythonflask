@@ -19,3 +19,5 @@ class Config(object):
     ADMINS = ['your-email@example.com']
     # some of post in one page
     POSTS_PER_PAGE = 3
+    # list language is suppported
+    LANGUAGES = ['en', 'vi']

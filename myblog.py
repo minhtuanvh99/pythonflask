@@ -1,4 +1,4 @@
-from server import app, db
+from server import app, db, cli
 from server.models import User, Post
 
 

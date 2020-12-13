@@ -15,6 +15,9 @@ from flask_mail import Mail
 #
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from flask_babel import Babel
+# 
+from flask import request
 
 app = Flask(__name__)
 
@@ -34,6 +37,13 @@ login.login_view = 'login'
 mail = Mail(app)
 moment = Moment(app)
 bootstrap = Bootstrap(app)
+babel = Babel(app)
+
+#
+@babel.localeselector
+def get_locale():
+    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return 'vi'
 
 # 
 if not app.debug:
